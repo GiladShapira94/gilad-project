@@ -17,6 +17,4 @@ spec:
     path: workflow.py
     name: workflow
   artifacts: []
-  source: git://github.com/GiladShapira94/gilad-project.git#refs/tags/v2
-  load_source_on_run: false
   desired_state: online
