@@ -18,5 +18,5 @@ def kfpipeline():
     
     # run the ingestion function with the new image and params
     builder = funcs['data_fetch'].deploy_step(skip_deployed=True)
-    job = funcs['data_fetch'].as_step(outputs=['df'])
+    job = funcs['data_fetch'].as_step(image=builder.outputs['image'],outputs=['df'])
     serving = funcs['serving'].deploy_step()
