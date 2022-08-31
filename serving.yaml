@@ -2,7 +2,7 @@ kind: serving
 metadata:
   name: serving
   tag: v2
-  hash: df58a27be61835694c90bd511634385e044d0940
+  hash: 9ceed5cda084262ce0a46315656e7c7294724e05
   project: project-version-example
   categories: []
 spec:
