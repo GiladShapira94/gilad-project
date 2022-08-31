@@ -1,0 +1,22 @@
+kind: project
+metadata:
+  name: project-version-example
+spec:
+  functions:
+  - url: data_fetch.py
+    name: data_fetch
+    kind: job
+    image: mlrun/mlrun
+    handler: data_fetch
+    with_repo: true
+  - url: serving.yaml
+    name: serving
+    with_repo: true
+  workflows:
+  - engine: kfp
+    path: workflow.py
+    name: workflow
+  artifacts: []
+  source: git://github.com/GiladShapira94/versioning-example.git#refs/tags/v1
+  load_source_on_run: false
+  desired_state: online

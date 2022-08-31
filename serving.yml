@@ -1,0 +1,58 @@
+kind: serving
+metadata:
+  name: serving
+  tag: v1
+  hash: df58a27be61835694c90bd511634385e044d0940
+  project: project-version-example
+  categories: []
+spec:
+  command: ''
+  args: []
+  image: mlrun/mlrun
+  build:
+    commands: []
+  description: ''
+  disable_auto_mount: false
+  env: []
+  resources:
+    requests:
+      memory: 1Mi
+      cpu: 25m
+    limits:
+      memory: 20Gi
+      cpu: '2'
+  node_selector:
+    app.iguazio.com/lifecycle: non-preemptible
+  priority_class_name: igz-workload-medium
+  preemption_mode: prevent
+  min_replicas: 1
+  max_replicas: 4
+  source: ''
+  function_kind: serving_v2
+  graph:
+    steps:
+      serving:
+        kind: task
+        handler: serving.data_fetch
+        responder: true
+  secret_sources: []
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app.iguazio.com/lifecycle
+            operator: NotIn
+            values:
+            - preemptible
+          - key: eks.amazonaws.com/capacityType
+            operator: NotIn
+            values:
+            - SPOT
+          - key: node-lifecycle
+            operator: NotIn
+            values:
+            - spot
+  tolerations: null
+  security_context: {}
+verbose: false
