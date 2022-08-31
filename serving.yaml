@@ -33,7 +33,7 @@ spec:
     steps:
       serving:
         kind: task
-        handler: serving.data_fetch
+        handler: serving.serving
         responder: true
   secret_sources: []
   affinity:
