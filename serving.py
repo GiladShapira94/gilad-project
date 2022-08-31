@@ -1,2 +1,2 @@
 def serving(event):
-    return "version_1"
+    return "version_2"
